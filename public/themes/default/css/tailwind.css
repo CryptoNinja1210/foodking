@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    a,
+    button,
+    label,
+    span { @apply inline-block; font-style: initial; }
+    
+    input,
+    select,
+    textarea {
+        @apply 
+        placeholder:text-sm placeholder:text-placeholder
+        focus-within:outline-0 bg-transparent text-[15px]
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 { @apply text-heading; font-style: initial; }
+
+    body { @apply text-base font-normal font-rubik scroll-smooth text-paragraph bg-white }
+}
+
+@layer components {
+    .container { @apply max-w-6xl mx-auto px-2.5 sm:px-4 }
+    .row { @apply flex flex-wrap -m-3 }
+    .col-1 { @apply w-1/6 p-3 }
+    .col-2 { @apply w-1/5 p-3 }
+    .col-3 { @apply w-1/4 p-3 }
+    .col-4 { @apply w-1/3 p-3 }
+    .col-5 { @apply w-2/5 p-3 }
+    .col-6 { @apply w-1/2 p-3 }
+    .col-7 { @apply w-3/5 p-3 }
+    .col-8 { @apply w-2/3 p-3 }
+    .col-9 { @apply w-3/4 p-3 }
+    .col-10 { @apply w-4/5 p-3 }
+    .col-11 { @apply w-5/6 p-3 }
+    .col-12 { @apply w-full p-3 }
+
+    .form-row { @apply flex flex-wrap -mx-1 -my-2 }
+    .form-col-1 { @apply w-1/6 px-1 py-2 }
+    .form-col-2 { @apply w-1/5 px-1 py-2 }
+    .form-col-3 { @apply w-1/4 px-1 py-2 }
+    .form-col-4 { @apply w-1/3 px-1 py-2 }
+    .form-col-5 { @apply w-2/5 px-1 py-2 }
+    .form-col-6 { @apply w-1/2 px-1 py-2 }
+    .form-col-7 { @apply w-3/5 px-1 py-2 }
+    .form-col-8 { @apply w-2/3 px-1 py-2 }
+    .form-col-9 { @apply w-3/4 px-1 py-2 }
+    .form-col-10 { @apply w-4/5 px-1 py-2 }
+    .form-col-11 { @apply w-5/6 px-1 py-2 }
+    .form-col-12 { @apply w-full px-1 py-2 }
+
+    /*===================================
+              LAYOUT PART START
+    ====================================*/
+    /* HEADER */
+    .db-header { @apply fixed top-0 left-0 z-30 w-full p-4 flex items-center justify-between lg:gap-36 bg-white transition }
+    .db-header-left { @apply flex items-center w-full md:gap-36 }
+    .db-header-right { @apply flex-shrink-0 w-fit flex items-center gap-2.5 sm:gap-4 }
+    .db-header-logo { @apply flex-auto w-28 flex-shrink-0 }
+    .db-header-widget { @apply text-sm w-7 h-7 leading-7 sm:text-base sm:w-8 sm:h-8 sm:leading-8 text-center rounded-lg }
+    .db-header-lang { @apply w-4 h-4 rounded-lg mx-auto  }
+    .db-header-widget-badge { @apply absolute -top-2 sm:-top-1.5 -right-1 z-10 w-5 h-5 text-center leading-4 rounded-full text-[10px] border-2 border-white text-white bg-primary }
+    .db-header-profile-group { @apply flex items-center gap-2 }
+    .db-header-profile-group div,
+    .db-header-profile-group i { @apply hidden sm:block }
+    .db-header-profile-title { @apply font-medium capitalize text-sm leading-none mb-1 }
+    .db-header-profile-name { @apply capitalize text-sm leading-none text-heading }
+    .db-header-profile-dropdown { @apply absolute top-11 sm:top-12 right-0 z-20 px-2 py-2.5 rounded-lg border border-solid border-slate-200 bg-white shadow-lg }
+    .db-header-profile-dropdown-menu { @apply flex items-center justify-start gap-2.5 w-full whitespace-nowrap pl-3 pr-8 py-1.5 text-sm rounded-md capitalize transition text-gray-600 hover:bg-gray-100 }
+
+    /* SIDEBAR */
+    .db-sidebar { @apply fixed top-0 left-0 z-[39] w-[260px] p-4 h-screen -translate-x-[100%] lg:translate-x-0 lg:top-16 lg:h-[calc(100vh_-_64px)] overflow-y-auto thin-scrolling shadow-sidebar-right transition bg-white }
+    .db-sidebar.active { @apply translate-x-0 lg:-translate-x-[100%] shadow-sidebar lg:shadow-none }
+    .db-sidebar-header { @apply flex lg:hidden items-center justify-between mb-8 }
+    .db-sidebar-nav { @apply mb-6 last:mb-0 }
+    .db-sidebar-nav-title { @apply uppercase text-xs mb-3 font-medium tracking-[2px] text-gray-400 }
+    .db-sidebar-nav-item.active .db-sidebar-nav-menu { @apply text-primary bg-primary/5 }
+    .db-sidebar-nav-item.router-link-active .db-sidebar-nav-menu { @apply text-primary bg-primary/5 }
+    .db-sidebar-nav-menu.router-link-active { @apply text-primary bg-primary/5 }
+    .db-sidebar-nav-menu { @apply capitalize w-full flex items-center justify-start text-left rounded-lg gap-3 py-2.5 px-3 transition hover:bg-gray-100 }
+    .db-sidebar-nav-menu i { @apply text-sm }
+    .db-sidebar-nav-menu span { @apply text-base flex-auto }
+    .db-sidebar-nav-dropdown { @apply h-0 overflow-hidden transition }
+    .db-sidebar-nav-menu.downarrow { @apply after:content-['\f054'] after:font-awesome after:font-bold after:text-[10px] after:transition }
+    .db-sidebar-nav-item.active .downarrow { @apply after:rotate-90 }
+    .db-sidebar-nav-dropdown-list { @apply mx-5 my-2 flex flex-col border-l-2 border-gray-100 }
+    .db-sidebar-nav-dropdown-menu { @apply pl-5 pr-2 py-2 rounded-lg text-sm leading-4 capitalize transition hover:bg-gray-100 hover:text-primary }
+
+    .db-message-list .active { @apply !bg-primary/5 }
+    .db-message-list .active h4 { @apply text-primary }
+    /*===================================
+              LAYOUT PART END
+    ====================================*/
+
+ 
+    /*===================================
+            COMPONENTS PART START
+    ====================================*/
+    .ff-header .container { @apply h-[118px] lg:h-[74px] py-3 lg:py-0 }
+    .ff-header.active { @apply fixed top-0 left-0 w-full z-60 }
+    #cart.active { @apply opacity-100 visible }
+    #cart.active > div { @apply translate-x-0 }
+    .fd-backdrop.active { @apply opacity-100 visible }
+    .cart-switch:checked + label { @apply text-white bg-[#008BBA] }
+    .size-tabs .active { @apply bg-[#FFEDF4] border-primary }
+    .size-tabs .active .custom-radio-field:checked + .custom-radio-span { @apply border-primary }
+    .extra .custom-checkbox-field { @apply z-0 }
+    .extra.active { @apply !bg-[#FFEDF4] !border-primary }
+    .extra.active .custom-checkbox-field:checked + .custom-checkbox-icon { @apply bg-primary border-primary }
+    .addon.active { @apply !bg-[#FFEDF4] !border-primary }
+    .branch-navs .active { @apply bg-primary text-white font-medium hover:text-white hover:bg-primary }
+    .active-group .active { @apply !border-primary/50 !bg-primary/5 }
+    .active-group .active .fa-check { @apply !border-primary !bg-primary }
+    .active-group .active input:checked + .custom-radio-span { @apply !border-[3px] !border-primary }
+    .paper-link svg { @apply stroke-[#6E7191] transition }
+    .paper-link span { @apply text-heading transition }
+    .paper-link:hover svg,
+    .paper-link:hover span { @apply text-primary stroke-primary }
+    .address-btn:hover svg,
+    .address-btn:hover span { @apply text-white fill-white }
+    .cookie-paper { @apply translate-y-full opacity-0 invisible transition-all duration-500 ease-linear }
+    .cookie-paper.active { @apply translate-y-0 opacity-100 visible }
+    .add-btn:hover svg { @apply fill-white }
+    .add-btn:hover span { @apply text-white }
+    .info-btn:hover svg { @apply fill-primary }
+    .profile-paper { @apply invisible opacity-0 scale-0 transition }
+    .profile-paper.active { @apply visible opacity-100 scale-100 transition }
+    .veg-navs .veg-active { @apply shadow-filter bg-white } 
+    .veg-navs .veg-active i { @apply opacity-100 ml-0 } 
+    .menu-slides .menu-category-active { @apply bg-[#FFEDF4] border-primary }
+    .dimension-navs .dimension-active { @apply text-heading }
+    .ff-header.landing-header.active { @apply shadow-xs bg-white }
+
+    /* PAYMENT CARD */
+    .payment-fieldset { @apply grid grid-cols-2 md:grid-cols-4 justify-center gap-6 mb-12 }
+    .payment-label { @apply py-5 px-3 w-full flex flex-col items-center gap-3 rounded-lg shadow-xs text-center cursor-pointer relative border transition-all duration-300 bg-white border-white }
+    .payment-label.active { @apply border-primary bg-[#FFEDF4] }
+    .payment-label input { @apply absolute top-2.5 left-2.5 accent-primary }
+    .payment-label img { @apply h-8 }
+    .payment-label span { @apply text-sm capitalize text-heading }
+
+    /* PRODUCT CARD GRID */
+    .product-card-grid { @apply relative flex flex-col rounded-2xl border transition border-[#EFF0F6] bg-white hover:shadow-xl }
+    .product-card-grid-image { @apply w-full rounded-t-2xl }
+    .product-card-grid-badge-group { @apply absolute top-3 left-3 rotate-[-35deg] }
+    .product-card-grid-badge-image { @apply w-12 h-12 }
+    .product-card-grid-badge-text { @apply capitalize text-sm font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white }
+    .product-card-grid-content-group { @apply py-4 px-3 rounded-b-2xl h-full flex flex-col justify-between }
+    .product-card-grid-header-group { @apply flex items-start gap-2 mb-2 }
+    .product-card-grid-title { @apply text-sm font-semibold capitalize text-ellipsis whitespace-nowrap overflow-hidden w-fit max-w-[200px] }
+    .product-card-grid-info-btn { @apply mt-[3px] }
+    .product-card-grid-describe { @apply text-xs text-ellipsis mb-3 }
+    .product-card-grid-footer-group { @apply flex items-center justify-between gap-2 }
+    .product-card-grid-price-group { @apply flex flex-wrap items-center gap-x-2 }
+    .product-card-grid-price-previous { @apply text-sm font-medium }
+    .product-card-grid-price-current { @apply text-lg font-medium }
+    .product-card-grid-cart-btn { @apply flex items-center gap-1.5 rounded-3xl capitalize text-sm font-medium h-6 px-2 shadow-md transition bg-white hover:bg-primary }
+
+    /* PRODUCT CARD LIST */
+    .product-card-list { @apply relative flex items-center rounded-lg border transition border-[#EFF0F6] bg-white hover:shadow-xl }
+    .product-card-list-image { @apply flex-shrink-0 w-28 h-full object-cover rounded-l-lg }
+    .product-card-list-badge-group { @apply absolute top-3 left-3 rotate-[-35deg] }
+    .product-card-list-badge-image { @apply w-12 h-12 }
+    .product-card-list-badge-text { @apply capitalize text-sm font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white }
+    .product-card-list-content-group { @apply p-3 rounded-r-lg w-full h-full flex flex-col justify-between }
+    .product-card-list-header-group { @apply flex items-start gap-2 mb-2 }
+    .product-card-list-title { @apply text-sm font-semibold capitalize }
+    .product-card-list-info-btn { @apply mt-[3px] }
+    .product-card-list-describe { @apply text-xs text-ellipsis mb-3 }
+    .product-card-list-footer-group { @apply flex items-center justify-between gap-2 }
+    .product-card-list-price-group { @apply flex flex-wrap items-center gap-x-2 }
+    .product-card-list-price-previous { @apply text-sm font-medium }
+    .product-card-list-price-current { @apply text-lg font-medium }
+    .product-card-list-cart-btn { @apply flex items-center gap-1.5 rounded-3xl capitalize text-sm font-medium h-6 px-2 shadow-md transition bg-white hover:bg-primary }
+
+    /* CHAT MESSAGE */
+    .chat-list { @apply flex flex-col-reverse overflow-x-hidden overflow-y-auto gap-5 p-4 transition }
+    .chat-list.frontend { @apply h-[calc(100vh_-_260px)] sm:h-[calc(100vh_-_250px)] }
+    .chat-list.backend { @apply h-[400px] sm:h-[calc(100vh_-_315px)] }
+    .chat-list.frontend.change { @apply h-[calc(100vh_-_320px)] sm:h-[calc(100vh_-_300px)] }
+    .chat-list.backend.change { @apply h-[400px] sm:h-[calc(100vh_-_380px)] }
+    .chat-item { @apply flex items-end gap-3 }
+    .chat-avatar { @apply w-7 h-7 mb-5 rounded-full flex-shrink-0 }
+    .chat-group { @apply flex flex-col gap-1 }
+    .chat-group-text { @apply flex flex-col gap-1 }
+    .chat-text { @apply w-fit max-w-sm text-sm py-3 px-4 text-heading }
+    .chat-group-meta { @apply flex flex-wrap items-center justify-between gap-1 }
+    .chat-meta { @apply text-xs }
+
+    .chat-user { @apply flex-row-reverse }
+    .chat-admin .chat-text { @apply rounded-2xl odd:rounded-bl even:rounded-tl bg-[#EFF0F6] }
+    .chat-user .chat-text { @apply rounded-2xl even:rounded-tr odd:rounded-br bg-[#FFEDF4] }
+    .chat-user .chat-group-text { @apply items-end }
+    .chat-user .chat-group-meta { @apply flex-row-reverse }
+
+    .chat-list::-webkit-scrollbar { @apply w-2 bg-transparent }
+    .chat-list::-webkit-scrollbar-thumb { @apply rounded-xl bg-gray-400 border-2 border-solid border-white }
+
+    .chat-footer { @apply w-full flex items-center gap-5 p-4 }
+    .chat-footer-file-label { @apply flex-shrink-0 relative isolate cursor-pointer w-fit h-fit }
+    .chat-footer-file-input { @apply absolute top-0 left-0 opacity-0 w-full h-full -z-10 }
+    .chat-footer-data { @apply w-full rounded-3xl py-2 px-4 overflow-hidden bg-[#F7F7FC] }
+    .chat-footer-data-list { @apply flex gap-3 py-2 overflow-x-auto }
+    .chat-footer-data-list::-webkit-scrollbar { @apply h-2 bg-gray-200 rounded-xl }
+    .chat-footer-data-list::-webkit-scrollbar-thumb { @apply rounded-xl bg-gray-400 border-2 border-solid border-slate-200 }
+    .chat-footer-data-input { @apply h-full w-full py-2 }
+    .chat-footer-sent { @apply flex-shrink-0 }
+ 
+
+    /* THIN SCROLL BAR */
+    .thin-scrolling { @apply overflow-y-auto transition }
+    .thin-scrolling:hover::-webkit-scrollbar-thumb { @apply bg-primary }
+    .thin-scrolling::-webkit-scrollbar { @apply w-[3px] }
+    .thin-scrolling::-webkit-scrollbar { @apply rounded-2xl bg-transparent }
+
+    /* OTHER */
+    .db-image { @apply w-full rounded-[10px] border-[5px] border-white shadow }
+    .db-light-text { @apply text-base font-light tracking-wide }
+
+    /* ORDER STATUS */
+    .db-order-status.check { @apply before:bg-primary before:content-['\f00c'] before:font-awesome before:font-bold before:text-white before:text-xs before:text-center }
+    .db-order-status.active { @apply before:border-[5px] }
+
+    /* COMMON CLASS */
+    .invalid { @apply !border-red-300 before:!bg-red-300 }
+
+    /* MAIN CONTENT */
+    .db-main { @apply font-public px-3 sm:px-4 pb-4 xh:pt-[170px] pt-[80px] lg:pt-[84px] lg:pl-[280px] lg:pr-5 lg:pb-5 h-screen overflow-auto transition bg-[#f7f7fc] }
+    .db-main.expand { @apply lg:pl-5 }
+
+    /* BACKLDROP */
+    .backdrop { @apply w-full h-full fixed top-0 left-0 z-40 invisible opacity-0 bg-black/60 transition }
+    .backdrop.active { @apply visible opacity-100 }
+
+    /* BUTTON */
+    .db-btn { @apply inline-flex items-center justify-center gap-2 rounded-md shadow-db-card capitalize text-sm font-normal py-2.5 px-4 transition }
+    .db-btn-full { @apply flex items-center justify-center gap-2 w-full rounded-lg shadow-db-card capitalize text-sm font-medium py-2.5 px-4 transition }
+    .xmark-btn { @apply w-6 h-6 leading-6 text-base text-center rounded-full transition bg-gray-100 text-gray-500 hover:text-primary hover:bg-red-100 }
+    .db-btn-outline { @apply inline-flex items-center justify-center gap-1.5 rounded-md capitalize text-sm font-normal py-1.5 px-3 border transition border-gray-200 text-gray-700 bg-white hover:border-primary/20 hover:bg-primary/5 hover:text-primary }
+    .db-btn-outline i { @apply text-xs }
+    .db-btn-outline.primary { @apply border-primary text-primary hover:bg-primary/10 }
+    .db-btn-outline.warning { @apply border-[#F6A609] text-[#F6A609] hover:bg-[#F6A609]/10 }
+    .db-btn-outline.success { @apply border-green-500 text-green-600 hover:bg-green-50 }
+    .db-btn-outline.danger { @apply border-red-500 text-red-600 hover:bg-red-50 }
+    .db-btn-outline.info { @apply border-cyan-500 text-cyan-600 hover:bg-cyan-50 }
+    .db-btn-outline.sm { @apply !text-xs !rounded !py-1 !px-2 !gap-1 }
+    .db-btn-outline.sm i { @apply !text-[10px] }
+
+    .db-btn-fill { @apply inline-flex items-center justify-center gap-1.5 text-sm capitalize shadow-db-card py-1.5 px-3 rounded-md transition }
+    .db-btn-fill i { @apply text-xs }
+    .db-btn-fill.primary { @apply text-primary bg-primary/10 hover:bg-primary/20 }
+    .db-btn-fill.yellow { @apply text-[#F6A609] bg-[#F6A609]/10 hover:bg-[#F6A609]/20 }
+    .db-btn-fill.purple { @apply text-fuchsia-600 bg-fuchsia-100 hover:bg-fuchsia-200 }
+    .db-btn-fill.green { @apply text-emerald-600 bg-emerald-100 hover:bg-emerald-200 }
+    .db-btn-fill.blue { @apply text-blue-600 bg-blue-100 hover:bg-blue-200 }
+    .db-btn-fill.gray { @apply text-gray-600 bg-gray-200 hover:bg-gray-300 }
+    .db-btn-fill.red { @apply text-red-600 bg-red-100 hover:bg-red-200 }
+    .db-btn-fill.sm { @apply !text-xs !rounded !py-1 !px-2 !gap-1 }
+    .db-btn-fill.sm i { @apply !text-[10px] }
+
+    /* CARD */
+    .db-card { @apply rounded border-none shadow-db-card bg-white }
+    .db-card-body { @apply p-5 }
+    .db-card-header { @apply p-5 flex flex-wrap justify-center flex-col items-center sm:flex-row sm:justify-between border-b border-gray-200 gap-5 }
+    .db-card-title { @apply capitalize text-[18px] font-medium font-public text-paragraph }
+    .db-card-filter { @apply flex flex-wrap items-center justify-center sm:items-start gap-2.5 }
+    .db-card-filter-btn { @apply flex items-center justify-start gap-1.5 pt-2 pb-1.5 px-2.5 text-sm leading-none capitalize rounded-md transition border text-paragraph border-primary bg-white hover:text-primary hover:border-primary/10 hover:bg-primary/5 after:content-['\f107'] after:text-primary after:font-awesome after:font-bold after:text-[11px] after:-mt-1 }
+    .db-card-filter-select { @apply cursor-pointer h-9 pl-2.5 pr-7 text-sm leading-none capitalize appearance-none rounded-md transition border text-primary border-primary bg-white after:content-['\f107'] after:font-awesome after:font-bold after:text-[11px] after:-mt-1 }
+    .db-card-filter-btn i { @apply text-sm text-primary  }
+    .db-card-filter-btn span { @apply pr-1 text-primary }
+    .db-card-filter .db-field-down-arrow { @apply text-primary }
+    .db-card-filter-dropdown-list { @apply absolute top-10 right-0 z-20 p-2 rounded-md bg-white shadow-lg }
+    .db-card-filter-dropdown-menu { @apply flex items-center whitespace-nowrap justify-start gap-2.5 px-3 py-1.5 text-sm rounded-md capitalize transition text-gray-500 hover:text-primary hover:bg-primary/5 }
+    .db-card-filter-dropdown-menu i { @apply w-4 flex-shrink-0 }
+
+    /* BREADCRUMB */
+    .db-breadcrumb { @apply flex flex-col flex-wrap gap-y-2 gap-x-5 items-center justify-center sm:flex-row sm:justify-between pt-[14px] }
+    .db-breadcrumb-title { @apply capitalize text-xl font-semibold }
+    .db-breadcrumb-list { @apply flex flex-wrap items-center justify-center sm:justify-end }
+    .db-breadcrumb-item { @apply capitalize text-[22px] text-slate-400 }
+    .db-breadcrumb-link { @apply transition text-slate-600 hover:text-primary after:content-['/'] after:px-1.5 after:text-paragraph }
+
+    /* TABS */
+    .db-tab-btn { @apply w-full flex items-center text-[15px] capitalize text-left gap-3 py-2 px-3 rounded border-b last:border-none transition border-slate-100 hover:bg-slate-100 }
+    .db-tab-btn i { @apply text-sm }
+    .db-tab-btn.active { @apply !text-primary !bg-primary/5 }
+    .db-tab-div { @apply hidden }
+    .db-tab-div.active { @apply block }
+    .db-tab-sub-div { @apply hidden }
+    .db-tab-sub-div.active { @apply block }
+    .db-tab-sub-btn.active { @apply !text-white !bg-primary }
+
+    .db-tabBtn { @apply w-full flex items-center justify-center gap-2 rounded sm:rounded-b-none sm:rounded-t capitalize py-2.5 sm:py-3 px-3 text-sm border border-transparent sm:border-b-primary/50 transition hover:bg-gray-100 hover:text-primary }
+    .db-tabBtn.active { @apply text-primary border-primary/50 sm:border-b-white bg-primary/5 sm:bg-white }
+    .db-tabDiv { @apply hidden rounded sm:rounded-t-none sm:rounded-b py-3 px-4 sm:py-4 sm:px-5 text-sm leading-6 shadow-db-card border sm:border-x sm:border-b border-primary/50 sm:border-t-white bg-white }
+    .db-tabDiv.active { @apply block }
+    .db-tabBtn span { @apply whitespace-nowrap text-ellipsis overflow-hidden }
+
+    .profile-tabBtn.active { @apply shadow-[0px_6px_10px_rgba(255,_0,_107,_0.24)] stroke-white text-white bg-primary }
+    .profile-tabDiv { @apply hidden }
+    .profile-tabDiv.active { @apply block }
+
+    /* DROPDOWN */
+    .dropdown-group { @apply relative leading-[0px] }
+    .dropdown-btn { @apply cursor-pointer }
+    .dropdown-list { @apply hidden }
+    .dropdown-list.active { @apply block }
+
+    /* FIELDS */
+    .db-field-title { @apply uppercase text-xs font-medium font-public block mb-2 text-[#566a7f] }
+    .db-field-title.required { @apply after:content-['*'] after:ml-1 after:text-red-500 }
+    .db-field-control { @apply block w-full h-10 px-3 pb-[2px] font-public rounded-md border transition bg-white border-gray-200 focus-within:border-primary/20 }
+    .db-multiple-field { @apply flex items-center w-full h-10 rounded-md border transition bg-white border-gray-200 focus-within:border-primary/20 }
+    .db-multiple-field input { @apply w-1/2 h-full px-3 pb-[2px] border-l first:border-none border-gray-200 transition }
+    .db-multiple-field button { @apply rounded-md h-8 mr-[3px] px-4 text-base transition bg-primary/10 text-primary hover:bg-primary hover:text-white }
+    .db-field-alert { @apply ml-1 text-red-500 font-public }
+    .db-field-down-arrow { @apply relative after:content-['\f107'] after:font-awesome after:font-bold after:text-xs after:absolute after:top-1/2 after:-translate-y-1/2 after:right-3 }
+    .db-field-radio-group { @apply flex items-center gap-5 pt-2 }
+    .db-field-radio { @apply flex items-center pt-1 w-fit cursor-pointer }
+    .db-field-checkbox { @apply flex items-center pt-1 w-fit cursor-pointer }
+    .db-field-label { @apply text-[15px] pl-2 leading-4 font-public capitalize cursor-pointer }
+    textarea.db-field-control { @apply h-36 py-3 }
+    .db-field-control[type=file] { @apply relative pl-0 transition before:transition before:content-[''] before:absolute before:top-0 before:left-[107px] before:z-10 before:w-[1px] before:h-full before:bg-gray-200 focus-within:before:bg-primary/20 }
+    .db-field-control[type=file]::-webkit-file-upload-button,
+    .db-field-control[type=file]::file-selector-button { @apply h-10 pl-4 pb-1 pr-7 rounded-l-lg text-sm text-paragraph cursor-pointer transition bg-white border-none }
+    .checkbox:checked { @apply border-none }
+    .checkbox:checked + .check-icon { @apply flex }
+    .checkbox:checked + .checkmark { @apply bg-primary border-primary }
+
+    input:checked + div { @apply border-primary }  
+    input:checked + div svg { @apply block }
+
+    .custom-switch { @apply inline-flex items-center justify-center cursor-pointer }
+    .custom-switch input { @apply relative w-5 h-3 cursor-pointer
+                                before:content-[''] before:inline-block before:absolute before:inset-0 before:w-full before:h-full before:rounded-3xl before:bg-paragraph before:transition-all before:duration-300 
+                                after:content-[''] after:absolute after:top-1/2 after:left-[30%] after:-translate-y-1/2 after:-translate-x-1/2 after:w-1.5 after:h-1.5 after:rounded-full after:bg-white after:transition-all after:duration-300 }
+    .custom-switch input:checked { @apply before:bg-primary after:left-[70%] }
+    .custom-switch label { @apply cursor-pointer pl-2 text-sm uppercase text-paragraph transition-all duration-300 }
+    .custom-switch input:checked + label { @apply text-primary }
+
+    .custom-checkbox { @apply relative w-4 h-4 cursor-pointer }
+    .custom-checkbox-field { @apply absolute z-10 opacity-0 w-full h-full appearance-none cursor-pointer }
+    .custom-checkbox-icon { @apply absolute top-0 left-0 w-full h-full text-center rounded leading-[14px] text-[10px] border cursor-pointer border-[#d9dee3] text-white }
+    .custom-checkbox-field:checked + .custom-checkbox-icon { @apply bg-primary border-primary shadow-checkRound }
+
+    .custom-radio { @apply relative w-4 h-4 cursor-pointer }
+    .custom-radio-field { @apply absolute z-10 opacity-0 w-full h-full appearance-none cursor-pointer }
+    .custom-radio-span { @apply absolute top-0 left-0 w-full h-full text-center rounded-full border cursor-pointer border-[#d9dee3] }
+    .custom-radio-field:checked + .custom-radio-span { @apply border-[5px] bg-white border-primary shadow-checkRound }
+    
+    .custom-radio.sm { @apply w-3 h-3 }
+    .custom-radio.sm .custom-radio-field:checked + .custom-radio-span { @apply border-[3px] }
+
+    /* TABLE */
+    .db-table-responsive { @apply w-full overflow-auto }
+    .db-table { @apply table-auto w-full text-left whitespace-nowrap }
+    .db-table.stripe .db-table-body-tr { @apply odd:!bg-[#f9fafb] }
+    .db-table-head { @apply border-b-2 border-t border-gray-200 }
+    .db-table-head-th { @apply px-4 py-3 !font-public tracking-[1px] font-medium text-xs uppercase text-[#566a7f] }
+    .db-table-body-tr { @apply border-b font-public border-gray-200 last:border-none }
+    .db-table-body-td { @apply px-4 py-3 font-public text-sm }
+    .db-table-badge { @apply py-1 px-2 font-public rounded-md capitalize }
+    .db-table-action { @apply relative }
+    .db-table-action i { @apply text-sm p-2 py-1 m-0.5 rounded transition }
+    .db-table-action.view i { @apply text-primary bg-primary/10 hover:bg-primary/20 }
+    .db-table-action.edit i { @apply text-green-500 bg-green-100 hover:bg-green-200 }
+    .db-table-action.delete i { @apply text-red-500 bg-red-100 hover:bg-red-200 }
+    .table-filter-div { @apply h-0 overflow-hidden transition-all duration-500 ease-linear }
+
+    /* TOOLTIP */
+    .db-tooltip { 
+        @apply absolute left-1/2 -translate-x-1/2 text-[10px] whitespace-nowrap font-medium tracking-wide uppercase pt-[1px] pb-[2px] px-[7px] rounded bg-gray-700 text-white
+        after:content-[''] after:absolute after:-bottom-[3px] after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:border-solid after:border-t-4 after:border-4 after:rounded-sm
+        after:border-t-transparent after:border-l-transparent after:border-r-gray-700 after:border-b-gray-700
+        -top-5 opacity-0 invisible transition
+    }
+
+    .db-table-action:hover .db-tooltip { @apply opacity-100 visible -top-full }
+
+    /* MODAL */
+    .modal { @apply fixed top-0 left-1/2 -translate-x-1/2 z-60 invisible opacity-0 w-full h-full overflow-y-auto transition bg-black/60 }
+    .ff-modal { @apply lg:top-[74px] }
+    .info-modal { @apply z-70 }
+    .modal.ff-modal.active .modal-dialog { @apply lg:mt-10 lg:mb-32 }
+    .modal.active { @apply visible opacity-100 }
+    .modal-dialog { @apply w-full mx-auto max-w-lg rounded-lg transition bg-white }
+    .modal.active .modal-dialog { @apply my-10 }
+    .modal-header { @apply flex justify-between gap-5 p-4 border-b border-slate-200 }
+    .modal-title { @apply capitalize text-lg font-medium }
+    .modal-body { @apply p-4 }
+    .modal-footer { @apply p-4 border-t border-slate-200 }
+    .modal-btns { @apply flex flex-wrap justify-end gap-3 mt-3 }
+    .modal-btn-fill { @apply inline-flex items-center gap-1.5 capitalize !text-sm py-1.5 px-3 rounded-md border border-primary text-white bg-primary }
+    .modal-btn-outline { @apply inline-flex items-center gap-1.5 capitalize !text-sm py-1.5 px-3 rounded-md border border-gray-200 !text-gray-600 bg-white }
+    .modal-close { @apply leading-none text-xl text-[#FB4E4E]  }
+
+
+    /* PAGINATION */
+    .db-pagination-navigate { @apply flex items-center gap-2 capitalize rounded-md border px-4 py-2 text-sm font-medium border-gray-300 bg-white text-gray-700 transition hover:bg-gray-50 }
+    .db-pagination-nav { @apply flex w-fit items-center overflow-hidden rounded-lg border border-gray-200 }
+    .db-pagination-menu { @apply px-3.5 py-2 text-sm text-center font-medium border-r last:border-none border-gray-200 text-gray-600 transition hover:bg-gray-100 }
+    .db-pagination-menu.active { @apply text-primary bg-primary/20 }
+    .db-pagination-menu i { @apply text-xs }
+
+
+    /* LIST */
+    .db-list { @apply flex flex-col -my-1.5 }
+    .db-list-item { @apply flex flex-col items-start sm:flex-row sm:items-center py-1.5 rounded-md transition }
+    .db-list-item-title { @apply text-left text-sm capitalize font-semibold whitespace-nowrap after:inline-block sm:after:hidden after:content-[':'] after:pl-1 text-heading }
+    .db-list-item-text { @apply text-left text-sm }
+    
+    .db-list.single .db-list-item-title { @apply w-full max-w-full sm:max-w-[180px] }
+    .db-list.single .db-list-item-text { @apply w-full }
+
+    .db-list.multiple { @apply flex-row flex-wrap }    
+    .db-list.multiple .db-list-item { @apply w-full sm:w-1/2 }    
+    .db-list.multiple .db-list-item-title { @apply w-full sm:w-1/2 }
+    .db-list.multiple .db-list-item-text { @apply w-full sm:w-1/2 }
+
+    /* BADGE */
+    .db-badge { @apply text-xs tracking-wide uppercase py-1 px-2 rounded }
+    .db-badge.yellow { @apply text-yellow-600 bg-yellow-100 }
+    .db-badge.green { @apply text-green-600 bg-green-100 }
+    .db-badge.blue { @apply text-blue-600 bg-blue-100 }
+    .db-badge.red { @apply text-red-600 bg-red-100 }
+
+
+    /* DRAWER */
+    .drawer { @apply fixed top-0 right-0 translate-x-[100%] z-50 w-full max-w-xl h-screen overflow-y-auto transition bg-white }
+    .drawer.active { @apply translate-x-[0%] }
+    .drawer-header { @apply flex justify-between gap-5 p-4 border-b border-slate-200 }
+    .drawer-title { @apply capitalize text-lg font-medium }
+    .drawer-body { @apply px-5 py-8 }
+
+    /* DB PRODUCT CARD */
+    .db-product-cart:hover svg,
+    .db-product-cart:hover span { @apply fill-white text-white }
+
+    .db-pos-cartDiv { @apply translate-x-full md:translate-x-0 transition }
+    .db-pos-cartDiv.active { @apply translate-x-0 }
+
+    .pos-group .active { @apply bg-[#FFEDF4] border-primary }
+
+    /* FOOTER */
+    .footer-part { @apply bg-footer bg-no-repeat bg-top bg-cover }
+
+    /* INSTALLER */
+    .installer-track { @apply flex items-center justify-between w-[109%] sm:w-[111%] }
+    .installer-track li { @apply flex items-center w-full }
+    .installer-track li:last-child::after { @apply hidden }
+    .installer-track li:after { @apply content-[''] w-full h-[1px] bg-[#D9DBE9] }
+    .installer-track li i { @apply flex-shrink-0 w-8 h-8 leading-[30px] text-xs sm:w-[38px] sm:h-[38px] sm:leading-9 sm:text-sm text-center rounded-full border text-white border-[#D9DBE9] bg-[#D9DBE9] }
+    .installer-track li.done { @apply cursor-pointer }
+    .installer-track li.done::after { @apply bg-primary }
+    .installer-track li.done i { @apply bg-white border-primary text-primary }
+    .installer-track li.active i { @apply bg-primary border-primary text-white }
+
+
+    .unread-message h4 { @apply relative after:content-[''] after:absolute after:top-0 after:-right-3 after:inline-block after:w-2 after:h-2 after:rounded-full after:bg-primary  }
+    /*===================================
+            COMPONENTS PART END
+    ====================================*/
+}
+
+@layer utilities {
+    .transition { @apply transition-all duration-300 ease-linear }
+}
+
+.swiper:hover .banner-swiper-navigate { @apply opacity-100 }
+.swiper-pagination-bullet { @apply text-xs font-normal w-5 h-5 leading-5 text-center rounded-full shadow-md opacity-100 !m-0 text-paragraph bg-white }
+.swiper-pagination-bullet-active { @apply bg-primary text-white }
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield; 
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.apexcharts-tooltip { @apply !border !border-gray-200 !rounded-md !shadow-paper overflow-hidden }
+.apexcharts-tooltip-z-group,
+.apexcharts-tooltip-goals-group { @apply !hidden }
+.apexcharts-tooltip-title { @apply !py-1.5 !px-3 !mb-0 !border-b !border-gray-200 !bg-white }
+.apexcharts-tooltip-series-group { @apply !py-1.5 !px-3 }
+
+.time-slot-gap { margin: 12px; }

@@ -1,0 +1,377 @@
+/* carousel start */
+.carousel__prev, .carousel__next {
+    font-size: 1.5rem !important;
+    height: 2.5rem !important;
+    width: 2.5rem !important;
+    border-radius: 30px !important;
+    color: rgb(110 113 145 / var(--tw-text-opacity)) !important;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.carousel__prev:hover, .carousel__next:hover {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 0 107 / var(--tw-bg-opacity)) !important;
+}
+
+/* carousel end */
+
+/* Select code start */
+.vue-select.no-radius {
+    border-radius: 0 !important;
+}
+
+.vue-select {
+    width: auto !important;
+    border: 1px solid rgb(229 231 235 / var(--tw-border-opacity)) !important;
+    border-radius: 0.375rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+.vue-select.invalid {
+    border: 1px solid rgb(252 165 165 / var(--tw-border-opacity)) !important
+}
+
+.vue-input {
+    padding: 0.1rem 0rem !important;
+}
+
+.vue-input input {
+    font-size: 0.9375rem !important;
+    font-weight: 400 !important;
+    line-height: 1.3 !important;
+}
+
+.vue-input input::placeholder {
+    color: #697a8d !important;
+}
+
+.vue-dropdown {
+    border: 1px solid #ff006b33 !important;
+    box-shadow: 0 0.25rem 1rem rgb(229 231 235 / 45%) !important;
+}
+
+.vue-select.direction-top .vue-dropdown {
+    border-top-left-radius: 0.375rem !important;
+    border-top-right-radius: 0.375rem !important;
+    z-index: 100000;
+}
+
+.vue-select.direction-bottom .vue-dropdown {
+    border-bottom-left-radius: 0.375rem !important;
+    border-bottom-right-radius: 0.375rem !important;
+    z-index: 100000;
+}
+
+.vue-select[aria-expanded='true'].direction-top {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.vue-select[aria-expanded='true'].direction-bottom {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.vue-select[aria-expanded='true'] {
+    border-color: #ff006b33 !important;
+}
+
+.vue-dropdown-item.highlighted {
+    background-color: rgba(67, 89, 113, .04) !important;
+}
+
+.vue-dropdown-item.selected.highlighted {
+    background-color: rgba(105, 108, 255, .08) !important;
+    color: rgb(255 0 107 / var(--tw-text-opacity)) !important;
+}
+
+.vue-dropdown-item.selected {
+    background-color: rgba(105, 108, 255, .08) !important;
+    color: rgb(255 0 107 / var(--tw-text-opacity)) !important;
+}
+
+.vue-dropdown-item {
+    font-size: 15px;
+    padding: 0.4375rem 0.875rem !important;
+}
+
+/* Select code close */
+
+
+/* Map code start*/
+.map-height {
+    height: 24rem;
+}
+
+/* Map code close*/
+
+
+/* Date picker code start*/
+/* .dp__input {
+    border-color: rgb(229 231 235 / var(--tw-border-opacity)) !important;
+} */
+
+.dp__input_focus {
+    border-color: rgb(255 0 107 / 0.2) !important;
+}
+
+/* Date picker code close here*/
+
+/* custom height start*/
+.c-h-30 {
+    height: 7.50rem;
+}
+
+.c-h-25 {
+    height: 6.75rem
+}
+
+/* custom height end*/
+
+/* Font size and color start */
+.font-fill-primary-toggle {
+    color: #FF006B;
+}
+
+@media (max-width: 639px) {
+    .font-fill-primary-toggle {
+        color: #FFFFFF !important;
+    }
+}
+
+.font-fill-paragraph-toggle {
+    color: #FFFFFF;
+}
+@media (max-width: 639px) {
+    .font-fill-paragraph-toggle {
+        color: #FF006B !important;
+    }
+}
+
+.lab-margin-top-minus-20 {
+    margin-top: -20px;
+}
+.lab-font-display-block {
+    display: block;
+}
+
+.font-fill-primary {
+    color: #FF006B;
+}
+
+.font-fill-paragraph {
+    color: #6E7191;
+}
+.font-fill-danger {
+    color: #FB4E4E;
+}
+.font-fill-black {
+    color: #1F1F39;
+}
+
+.font-fill-pos {
+    color: #FF8A26;
+}
+
+.add-btn:hover .font-fill-primary {
+    color: #ffffff;
+}
+
+.info-btn:hover .font-fill-paragraph {
+    color: #FF006B;
+}
+
+.lab-font-bold {
+    font-weight: bold !important;
+}
+
+.lab-font-size-12 {
+    font-size: 12px !important;
+}
+
+.lab-font-size-13 {
+    font-size: 13px !important;
+}
+
+.lab-font-size-14 {
+    font-size: 14px !important;
+}
+
+.lab-font-size-15 {
+    font-size: 15px !important;
+}
+
+.lab-font-size-16 {
+    font-size: 16px !important;
+}
+
+.lab-font-size-17 {
+    font-size: 17px !important;
+}
+
+.lab-font-size-20 {
+    font-size: 20px !important;
+}
+
+.lab-font-size-22 {
+    font-size: 22px !important;
+}
+
+.lab-font-size-24 {
+    font-size: 24px !important;
+}
+
+.lab-font-size-30 {
+    font-size: 30px !important;
+}
+
+.lab-font-size-32 {
+    font-size: 32px !important;
+}
+
+.lab-font-color-1 {
+    color: #dee2e5 !important;
+}
+
+.lab-font-color-2 {
+    color: #a0a3bd !important;
+}
+
+.lab-font-color-3 {
+    color: #27282a !important;
+}
+
+.lab-color-pink {
+    color: #f46099 !important;
+}
+
+.lab-color-portage {
+    color: #8a7ff8 !important;
+}
+
+.lab-color-cornflower-blue {
+    color: #5b7df7 !important;
+}
+
+.lab-color-heliotrope {
+    color: #b082f8 !important;
+}
+
+.lab-color-yellow {
+    color: #f5a83b !important;
+}
+
+.lab-color-green {
+    color: #5ec869 !important;
+}
+
+.lab-color-blue {
+    color: #008bba !important;
+}
+
+.lab-color-blue-2 {
+    color: #4D7CF7 !important;
+}
+
+.lab-color-delivered {
+    color: #797ef8 !important;
+}
+
+.lab-color-red {
+    color: #F74D4D !important;
+}
+
+
+
+.lab-font-weight-600 {
+    font-weight: 600;
+}
+
+/* Font size and color close*/
+
+/* Variation size start */
+.variation-margin-right {
+    margin-right: 10px;
+}
+
+/* Variation size close */
+
+/* branch start */
+.branch-margin-right {
+    margin-right: 10px;
+}
+
+/* branch close */
+
+/* time start */
+.time-margin-right {
+    margin-right: 10px;
+}
+
+/* time close */
+
+/* day take start */
+.day-take-margin-right {
+    margin-right: 10px;
+}
+
+/* day take close */
+
+/* Margin - 6 top start*/
+.margin-top-6 {
+    margin-top: 1.5rem;
+}
+
+.margin-top-5-px {
+    margin-top: 5px;
+}
+
+/* Margin - 6 top close*/
+
+/* payment custom font size start */
+.payment-font-size {
+    font-size: 12px;
+}
+
+/* payment custom font size end */
+
+/* POS code start */
+.pos-card-height {
+    height: 250px !important;
+}
+
+.pos-image-height {
+    height: 68% !important;
+}
+
+.pos-add-button:hover .font-fill-primary {
+    color: white;
+}
+
+/* POS code end */
+/* Advance order code start */
+.advance-order {
+    background-color: #1AB759;
+    color: #ffffff;
+}
+/* Advance order code close */
+
+/* Language conde start */
+.font-color-danger {
+    color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+.language-note-font-size {
+    font-size: 12px;
+}
+.strong-left-tab {
+    margin-left: 40px;
+}
+/* Language conde end */

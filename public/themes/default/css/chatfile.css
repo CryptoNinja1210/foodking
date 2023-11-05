@@ -1,0 +1,32 @@
+.chat-footer-data-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    padding: 4px 8px; 
+    border-radius: 6px; 
+    background-color: white; 
+}
+
+.chat-footer-data-item i {
+    flex-shrink: 0; 
+    width: 24px; 
+    height: 24px; 
+    line-height: 24px; 
+    text-align: center; 
+    border-radius: 50%; 
+    font-size: 12px; 
+    background-color: #e5e7eb;
+}
+
+.chat-footer-data-item span {
+    font-size: 12px; 
+    white-space: nowrap;
+}
+
+.chat-footer-data-item button {
+    font-size: 14px;
+}
+
+.chat-footer-data-item button:hover {
+    color: #ef4444;
+}
