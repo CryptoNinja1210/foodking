@@ -562,8 +562,8 @@ export default {
             if (this.temp.quantity <= 0) {
                 this.temp.quantity = 1;
             }
-            if (this.temp.quantity >= 3) {
-                this.temp.quantity = 3;
+            if (this.temp.quantity >= 2) {
+                this.temp.quantity = 2;
             }
             this.totalPriceSetup();
         },

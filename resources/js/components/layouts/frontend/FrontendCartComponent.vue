@@ -67,7 +67,7 @@
                                                type="number" :value="cart.quantity"
                                                class="text-center w-7 text-xs font-semibold text-heading indec-value" disabled>
                                         <button
-                                            :disabled="cart.quantity >= 3"
+                                            :disabled="cart.quantity >= 2"
                                             @click.prevent="quantityIncrement(index)"
                                             class="fa-solid fa-plus text-[10px] w-[18px] h-[18px] leading4 text-center rounded-full border transition text-primary border-primary hover:bg-primary hover:text-white indec-plus"></button>
                                     </div>

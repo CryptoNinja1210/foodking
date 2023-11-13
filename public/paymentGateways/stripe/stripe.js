@@ -16,9 +16,11 @@ if (stripeKey) {
         $('#payment_method').parent().removeClass('has-error');
         stripe.createToken(card).then(function (result) {
             if (result.error) {
+                console.log('result.error', result.error);
                 let errorElement = document.getElementById('card-errors');
                 errorElement.textContent = result.error.message;
             } else {
+                console.log('result.token', result.token);
                 stripeTokenHandler(result.token);
             }
         });
